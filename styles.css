@@ -21,6 +21,29 @@ h1 {
   font-size: 42px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+.titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  animation: animacionTitulo 2s infinite alternate;
+}
+
+@keyframes animacionTitulo {
+  0% {
+    transform: scale(1);
+    color: #000;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #ff0000;
+  }
+  100% {
+    transform: scale(1);
+    color: #000;
+  }
+}
+
 
 .card-container {
   display: flex;
