@@ -44,7 +44,6 @@ h1 {
   }
 }
 
-
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -61,8 +60,8 @@ h1 {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   margin: 10px;
   display: flex;
-  flex-direction: column; /* Cambiamos la dirección de flexión a columna para que el contenido se apile verticalmente */
-  justify-content: center;
+  flex-direction: row; /* Cambiamos la dirección de flexión a fila para que la imagen y el contenido se alineen horizontalmente */
+  justify-content: flex-start; /* Alineamos el contenido a la izquierda */
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -74,26 +73,22 @@ h1 {
 }
 
 .card img {
-  width: 100%;
+  width: auto;
   max-height: 200px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
-  transition: opacity 0.3s ease; /* Agregamos una transición a la propiedad opacity */
+  border-radius: 10px 0 0 10px; /* Ajustamos los bordes para que solo el lado izquierdo tenga esquinas redondeadas */
+  transition: opacity 0.3s ease;
 }
 
 .card:hover img {
-  opacity: 0; /* Hacemos que la imagen desaparezca cuando se pasa el cursor sobre el card */
+  opacity: 0.5; /* Ajustamos la opacidad de la imagen al pasar el cursor sobre el card */
 }
 
 .card-content {
   text-align: center;
   color: #333;
   padding: 20px;
-  transition: opacity 0.3s ease; /* Agregamos una transición a la propiedad opacity */
-}
-
-.card:hover .card-content {
-  opacity: 1; /* Hacemos que el contenido del card aparezca cuando se pasa el cursor sobre él */
+  flex-grow: 1; /* Permitimos que el contenido del card ocupe todo el espacio disponible */
 }
 
 
