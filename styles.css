@@ -1,50 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #333;
-}
-
-.page-container {
-  background-color: #333;
-  color: #fff;
-}
-
-header {
-  background-color: #333;
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  color: #fff;
-  font-size: 42px;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
-.titulo {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 48px;
-  animation: animacionTitulo 2s infinite alternate;
-}
-
-@keyframes animacionTitulo {
-  0% {
-    transform: scale(1);
-    color: #000; /* Color inicial oscuro */
-  }
-  50% {
-    transform: scale(1.2);
-    color: #fff; /* Color intermedio blanco */
-  }
-  100% {
-    transform: scale(1);
-    color: #000; /* Color final oscuro */
-  }
-}
-
-
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +23,7 @@ h1 {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card img {
+.card .default-image {
   width: 100%; /* Ancho de la imagen */
   height: auto;
   object-fit: cover;
@@ -80,52 +33,52 @@ h1 {
   z-index: 1; /* Establece una posición en el eje z para que la imagen esté detrás del texto */
 }
 
-.card:hover img {
-  opacity: 0;
-}
-
-.card img::before {
-  content: "";
+.card .hover-image {
+  width: 100%; /* Ancho de la imagen */
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0; /* Bordes redondeados en la esquina superior */
+  transition: opacity 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent); /* Efecto degradado de izquierda a derecha */
   opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2; /* Establece una posición en el eje z para que el degradado esté en frente de la imagen */
+  z-index: 2; /* Establece una posición en el eje z para que la imagen esté en frente del texto */
 }
 
-.card:hover img::before {
+.card:hover .default-image {
+  opacity: 0;
+}
+
+.card:hover .hover-image {
   opacity: 1;
 }
 
 .card-content {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 60%; /* Ancho para el contenido */
+  top: 50%;
+  left: 100%;
+  transform: translate(-100%, -50%); /* Alinea el contenido a la derecha al comienzo */
+  width: 100%; /* Ancho para el contenido */
   padding: 20px;
-  text-align: right; /* Alinea el texto a la derecha */
+  text-align: right; /* Alinea el texto a la derecha al comienzo */
   color: #fff;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Agregamos transición para el transform */
   z-index: 3; /* Establece una posición en el eje z para que el texto esté en frente de la imagen y del degradado */
 }
 
 .card:hover .card-content {
   opacity: 1;
-  text-align: center; /* Alinea el texto al centro cuando se pasa el cursor sobre el card */
+  transform: translate(-50%, -50%); /* Centra el contenido al pasar el cursor */
+  text-align: center; /* Alinea el texto al centro al pasar el cursor */
 }
 
-.card:hover .card-content h2,
-.card:hover .card-content p,
-.card:hover .card-content p.upper-text {
-  color: #333; /* Color oscuro para el texto cuando la imagen desaparece */
+.card-title,
+.card-description {
+  color: #333; /* Color negro para el texto */
+  margin-top: 5px; /* Espacio superior reducido */
 }
 
-footer {
-  background-color: #333;
-  padding: 10px;
-  text-align: center;
+.card-title {
+  margin-bottom: 5px; /* Espacio inferior reducido */
 }
